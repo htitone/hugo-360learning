@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hugo Titone - SDR @ 360Learning</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-left: 4px solid #667eea;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .highlight-box strong {
+            color: #667eea;
+            font-size: 1.1em;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .stat-card .number {
+            font-size: 2.5em;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .skill-tag {
+            background: #667eea;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.2em;
+            color: #555;
+            padding: 20px;
+            border-left: 4px solid #764ba2;
+            margin: 30px 0;
+            background: #f7fafc;
+            border-radius: 5px;
+        }
+
+        .timeline-item {
+            padding: 20px 0;
+            border-left: 3px solid #667eea;
+            padding-left: 30px;
+            margin-left: 10px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 25px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        .footer {
+            background: #2d3748;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            color: #667eea;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+
+        li {
+            margin: 10px 0;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Hugo Titone</h1>
+            <p>Futur SDR @ 360Learning</p>
+            <a href="mailto:hugo.titone@gmail.com" class="cta-button">📧 Contactez-moi</a>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>🎯 Pourquoi moi pour 360Learning ?</h2>
+                <div class="highlight-box">
+                    <p><strong>Mon profil en une phrase :</strong> BDR/SDR orienté mid-market avec 5 ans d'expérience en vente B2B, spécialisé en prospection outbound et qualification d'opportunités sur des solutions SaaS à forte valeur ajoutée.</p>
+                </div>
+                
+                <p>Après avoir développé une expertise solide en vente B2B et multiplié par 2,7x le chiffre d'affaires chez AkzoNobel, je suis aujourd'hui prêt à mettre mes compétences au service de 360Learning pour accélérer votre croissance sur le marché français.</p>
+            </div>
+
+            <div class="section">
+                <h2>📊 Résultats concrets</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="number">+175%</span>
+                        <span class="label">Croissance du CA<br>(350k€ → 950k€)</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="number">180</span>
+                        <span class="label">Clients gérés<br>(PME & ETI)</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="number">500</span>
+                        <span class="label">Cold calls<br>réalisés</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>💪 Ce que j'apporte à 360Learning</h2>
+                
+                <h3>1. Maîtrise des méthodologies de qualification</h3>
+                <p>Je maîtrise les frameworks essentiels pour qualifier efficacement les opportunités :</p>
+                <div class="skills-list">
+                    <span class="skill-tag">BANT</span>
+                    <span class="skill-tag">MEDDIC</span>
+                    <span class="skill-tag">SPIN</span>
+                    <span class="skill-tag">BEBEDC</span>
+                    <span class="skill-tag">ACRAC</span>
+                </div>
+
+                <h3>2. Stack technologique complet</h3>
+                <p>Je suis opérationnel sur l'ensemble des outils de prospection modernes :</p>
+                <div class="skills-list">
+                    <span class="skill-tag">LemList</span>
+                    <span class="skill-tag">Sales Navigator</span>
+                    <span class="skill-tag">Parabola</span>
+                    <span class="skill-tag">PhantomBuster</span>
+                    <span class="skill-tag">FullEnrich</span>
+                    <span class="skill-tag">Lusha</span>
+                    <span class="skill-tag">Kaspr</span>
+                    <span class="skill-tag">AirCall</span>
+                </div>
+
+                <h3>3. Expérience récente en environnement SaaS</h3>
+                <div class="timeline-item">
+                    <strong>Business Developer @ ArcaScience (Décembre 2025)</strong>
+                    <ul>
+                        <li>Création de fichiers de prospection via Sales Navigator & PhantomBuster</li>
+                        <li>Mise en place de séquences multicanales (mail/LinkedIn/téléphone) sur LemList</li>
+                        <li>500 cold calls réalisés via AirCall</li>
+                    </ul>
+                </div>
+
+                <h3>4. Certifications en cours (finalisées en Janvier 2026)</h3>
+                <ul>
+                    <li>✅ <strong>HubSpot Academy</strong> - Inbound Sales Certification (Août 2025)</li>
+                    <li>✅ <strong>Cisco Networking Academy</strong> - Introduction to Cybersecurity (Août 2025)</li>
+                    <li>🔄 <strong>AKIMBO School</strong> - Business Developer Tech/SaaS (En cours, Décembre 2025 - Janvier 2026)</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>🚀 Mon approche SDR</h2>
+                
+                <div class="highlight-box">
+                    <p><strong>Philosophie :</strong> Une prospection outbound structurée et disciplinée, basée sur la recherche approfondie des comptes cibles et la personnalisation des approches.</p>
+                </div>
+
+                <h3>Ma méthodologie en 4 étapes :</h3>
+                <ol style="padding-left: 40px; margin: 20px 0;">
+                    <li><strong>Recherche & Segmentation</strong> : Identification des comptes à fort potentiel via Sales Navigator et enrichissement des données avec PhantomBuster/FullEnrich</li>
+                    <li><strong>Approche multicanale</strong> : Séquences personnalisées combinant email, LinkedIn et téléphone via LemList</li>
+                    <li><strong>Qualification rigoureuse</strong> : Application des frameworks BANT/MEDDIC pour qualifier les opportunités</li>
+                    <li><strong>Passation qualitative</strong> : Transfert d'opportunités chaudes et contextualisées aux AE</li>
+                </ol>
+            </div>
+
+            <div class="section">
+                <h2>🎯 Pourquoi 360Learning ?</h2>
+                <p>Trois raisons majeures m'attirent vers 360Learning :</p>
+                
+                <div class="highlight-box">
+                    <p><strong>1. Un marché en forte croissance</strong><br>
+                    Le secteur de la formation digitale et du collaborative learning est en pleine expansion. Avec 1 700+ organisations clientes et 240M$ levés, 360Learning est clairement le leader européen du secteur.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>2. Une solution à forte valeur ajoutée</strong><br>
+                    La plateforme 360Learning résout un vrai problème : transformer les experts internes en moteurs de croissance. C'est exactement le type de solution B2B complexe sur laquelle j'excelle en prospection.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>3. Une culture d'excellence</strong><br>
+                    La culture "Convexity" de 360Learning, basée sur la documentation des process, le feedback continu et la faible hiérarchie, correspond parfaitement à ma façon de travailler : autonomie, rigueur et amélioration continue.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>💼 Mes soft skills SDR</h2>
+                <ul>
+                    <li><strong>Résilience face au refus</strong> : Le "non" fait partie du métier, je l'accepte et rebondis rapidement</li>
+                    <li><strong>Endurance commerciale</strong> : Capable de maintenir un haut volume d'activité sur la durée</li>
+                    <li><strong>Aisance orale</strong> : À l'aise au téléphone et en vidéo pour créer rapidement le lien</li>
+                    <li><strong>Discipline et régularité</strong> : Respect strict des process et des objectifs quotidiens</li>
+                    <li><strong>Outbound structurée</strong> : Approche méthodique et data-driven de la prospection</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>📈 Mon plan d'action 30-60-90 jours</h2>
+                
+                <h3>🎯 Premiers 30 jours : Onboarding & Apprentissage</h3>
+                <ul>
+                    <li>Maîtriser la plateforme 360Learning et ses cas d'usage</li>
+                    <li>Comprendre les personas cibles (L&D Managers, HR Directors, CLOs)</li>
+                    <li>S'approprier le pitch et les objections courantes</li>
+                    <li>Prendre en main le stack technique (SalesLoft, Gong, Salesforce)</li>
+                    <li>Observer et analyser les meilleures pratiques de l'équipe</li>
+                </ul>
+
+                <h3>🚀 60 jours : Montée en puissance</h3>
+                <ul>
+                    <li>Générer mes premières opportunités qualifiées pour les AE</li>
+                    <li>Atteindre 50% de mon quota mensuel</li>
+                    <li>Affiner ma compréhension des segments Mid-Market français</li>
+                    <li>Collaborer activement avec le Marketing sur la qualité des leads</li>
+                </ul>
+
+                <h3>💪 90 jours : Performance optimale</h3>
+                <ul>
+                    <li>Atteindre et dépasser mon quota mensuel</li>
+                    <li>Proposer des améliorations sur le messaging et les séquences</li>
+                    <li>Devenir une ressource pour les nouveaux BDR/SDR</li>
+                    <li>Contribuer activement aux réunions d'équipe avec des insights terrain</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>🎓 Formation continue</h2>
+                <p>Je crois fermement en l'apprentissage continu. C'est pourquoi je suis actuellement en formation intensive avec <strong>AKIMBO School</strong> (Décembre 2025 - Janvier 2026) pour maîtriser les dernières techniques de Business Development dans l'univers Tech/SaaS.</p>
+                
+                <p>Cette formation couvre notamment :</p>
+                <ul>
+                    <li>Les stratégies de prospection outbound avancées</li>
+                    <li>L'utilisation optimale des outils de Sales Engagement</li>
+                    <li>La qualification d'opportunités en environnement complexe</li>
+                    <li>L'Account-Based Sales Development</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>🌍 Disponibilité & Mobilité</h2>
+                <div class="highlight-box">
+                    <p><strong>📍 Localisation :</strong> Rhône-Alpes / Lyon<br>
+                    <strong>🚀 Disponibilité :</strong> Immédiate<br>
+                    <strong>💼 Format :</strong> Ouvert au remote first et aux déplacements occasionnels<br>
+                    <strong>🗣️ Langues :</strong> Français (natif) | Anglais (A2/B1, en cours d'amélioration)</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>✉️ Prochaines étapes</h2>
+                <p>Je serais ravi d'échanger avec vous pour :</p>
+                <ul>
+                    <li>Discuter de vos objectifs de croissance sur le marché français</li>
+                    <li>Comprendre vos attentes précises pour ce poste de SDR</li>
+                    <li>Partager ma vision sur la prospection mid-market en 2026</li>
+                    <li>Vous démontrer concrètement comment je pourrais contribuer à vos résultats</li>
+                </ul>
+
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="mailto:hugo.titone@gmail.com" class="cta-button">📧 Échangeons ensemble</a>
+                </div>
+            </div>
+
+            <div class="quote">
+                "Le meilleur moment pour démarrer, c'était hier. Le deuxième meilleur moment, c'est maintenant."<br>
+                — Proverbe que j'applique à ma prospection quotidienne
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>Hugo Titone</h3>
+            <p>BDR/SDR SaaS - Mid-market</p>
+            <div class="contact-links">
+                <a href="mailto:hugo.titone@gmail.com">📧 hugo.titone@gmail.com</a>
+                <a href="tel:+33778203627">📱 07-78-20-36-27</a>
+                <a href="https://www.linkedin.com/in/hugo-titone" target="_blank">💼 LinkedIn</a>
+            </div>
+            <p style="margin-top: 30px; font-size: 0.9em; opacity: 0.7;">
+                © 2026 Hugo Titone - Tous droits réservés
+            </p>
+        </div>
+    </div>
+</body>
+</html>
