@@ -92,7 +92,28 @@ body{font-family:'Inter',sans-serif;background:var(--light);color:var(--dark);li
 .profile-image{width:280px;height:280px}
 .business-grid{grid-template-columns:1fr}
 .btn{width:100%;max-width:320px;justify-content:center}
+.tools-grid{grid-template-columns:repeat(2,1fr)}
 }
+.tools-section{background:var(--white);padding:8rem 0}
+.methodology-card{background:var(--light);padding:3rem;border-radius:24px;margin:3rem 0;border-left:6px solid var(--accent)}
+.methodology-title{font-size:1.75rem;font-weight:700;margin-bottom:2rem;color:var(--accent)}
+.methodology-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:2rem}
+.step-card{background:var(--white);padding:2rem;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:all 0.3s}
+.step-card:hover{transform:translateY(-5px)}
+.step-number{font-size:2rem;font-weight:800;color:var(--accent);margin-bottom:1rem}
+.step-title{font-weight:700;margin-bottom:0.5rem}
+.step-description{color:var(--gray);font-size:0.95rem}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1rem;margin:2rem 0}
+.tool-badge{background:var(--accent);color:var(--white);padding:0.75rem 1.5rem;border-radius:50px;text-align:center;font-weight:600;font-size:0.95rem;transition:all 0.3s;box-shadow:0 4px 12px rgba(99,102,241,0.2)}
+.tool-badge:hover{transform:scale(1.05);box-shadow:0 6px 20px rgba(99,102,241,0.3)}
+.experience-card{background:var(--white);padding:3rem;border-radius:24px;box-shadow:0 8px 32px rgba(0,0,0,0.08);margin:3rem 0;border-top:6px solid var(--accent)}
+.experience-title{font-size:1.5rem;font-weight:700;margin-bottom:1.5rem}
+.experience-list{list-style:none;padding:0}
+.experience-list li{padding-left:2rem;margin-bottom:1rem;position:relative;color:var(--gray)}
+.experience-list li::before{content:'▸';position:absolute;left:0;color:var(--accent);font-weight:700}
+.quote-section{background:var(--light);padding:3rem;border-radius:24px;margin:3rem 0;text-align:center;border-left:6px solid var(--accent)}
+.quote-text{font-size:1.5rem;font-style:italic;color:var(--dark);line-height:1.8;margin-bottom:1rem}
+.quote-author{color:var(--gray);font-size:1rem}
 </style>
 </head>
 <body>
@@ -127,6 +148,89 @@ body{font-family:'Inter',sans-serif;background:var(--light);color:var(--dark);li
 <div style="color:#e5e4e2;font-size:1.25rem">Vidéo personnalisée pour 360Learning<br><small style="opacity:0.7">Cliquez pour découvrir mon message</small></div>
 </div>
 </div>
+</div>
+</section>
+
+<section class="tools-section">
+<div class="container">
+<h2 class="section-title">💪 Ce que j'apporte à 360Learning</h2>
+
+<div>
+<h3 class="section-subtitle" style="font-size:1.75rem;text-align:left;margin-bottom:2rem">1. Maîtrise des méthodologies de qualification</h3>
+<p style="font-size:1.125rem;color:var(--gray);margin-bottom:2rem">Je maîtrise les frameworks essentiels pour qualifier efficacement les opportunités :</p>
+<div class="tools-grid">
+<div class="tool-badge">BANT</div>
+<div class="tool-badge">MEDDIC</div>
+<div class="tool-badge">SPIN</div>
+<div class="tool-badge">BEBEDC</div>
+<div class="tool-badge">ACRAC</div>
+</div>
+</div>
+
+<div style="margin-top:4rem">
+<h3 class="section-subtitle" style="font-size:1.75rem;text-align:left;margin-bottom:2rem">2. Stack technologique complet</h3>
+<p style="font-size:1.125rem;color:var(--gray);margin-bottom:2rem">Je suis opérationnel sur l'ensemble des outils de prospection modernes :</p>
+<div class="tools-grid">
+<div class="tool-badge">LemList</div>
+<div class="tool-badge">Sales Navigator</div>
+<div class="tool-badge">Parabola</div>
+<div class="tool-badge">PhantomBuster</div>
+<div class="tool-badge">FullEnrich</div>
+<div class="tool-badge">Lusha</div>
+<div class="tool-badge">Kaspr</div>
+<div class="tool-badge">AirCall</div>
+</div>
+</div>
+
+<div style="margin-top:4rem">
+<h3 class="section-subtitle" style="font-size:1.75rem;text-align:left;margin-bottom:2rem">3. Expérience récente en environnement SaaS</h3>
+<div class="experience-card">
+<div class="experience-title">Business Developer @ ArcaScience (Décembre 2025)</div>
+<ul class="experience-list">
+<li>Création de fichiers de prospection via Sales Navigator & PhantomBuster</li>
+<li>Mise en place de séquences multicanales (mail/LinkedIn/téléphone) sur LemList</li>
+<li>500 cold calls réalisés via AirCall</li>
+</ul>
+</div>
+</div>
+
+<div style="margin-top:5rem">
+<h2 class="section-title">🚀 Mon approche SDR</h2>
+<div class="methodology-card">
+<div class="methodology-title">Philosophie</div>
+<p style="font-size:1.125rem;color:var(--gray);line-height:1.8">Une prospection outbound structurée et disciplinée, basée sur la recherche approfondie des comptes cibles et la personnalisation des approches.</p>
+</div>
+
+<h3 class="section-subtitle" style="margin-top:3rem">Ma méthodologie en 4 étapes</h3>
+<div class="methodology-steps">
+<div class="step-card">
+<div class="step-number">1</div>
+<div class="step-title">Recherche & Segmentation</div>
+<div class="step-description">Identification des comptes à fort potentiel via Sales Navigator et enrichissement des données avec PhantomBuster/FullEnrich</div>
+</div>
+<div class="step-card">
+<div class="step-number">2</div>
+<div class="step-title">Approche multicanale</div>
+<div class="step-description">Séquences personnalisées combinant email, LinkedIn et téléphone via LemList</div>
+</div>
+<div class="step-card">
+<div class="step-number">3</div>
+<div class="step-title">Qualification rigoureuse</div>
+<div class="step-description">Application des frameworks BANT/MEDDIC pour qualifier les opportunités</div>
+</div>
+<div class="step-card">
+<div class="step-number">4</div>
+<div class="step-title">Passation qualitative</div>
+<div class="step-description">Transfert d'opportunités chaudes et contextualisées aux AE</div>
+</div>
+</div>
+
+<div class="quote-section">
+<div class="quote-text">"Le meilleur moment pour démarrer, c'était hier. Le deuxième meilleur moment, c'est maintenant."</div>
+<div class="quote-author">Proverbe que j'applique à ma prospection quotidienne</div>
+</div>
+</div>
+
 </div>
 </section>
 
@@ -230,6 +334,10 @@ body{font-family:'Inter',sans-serif;background:var(--light);color:var(--dark);li
 
 <section class="cta-section">
 <div class="container">
+<div class="quote-section" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.3);margin-bottom:4rem">
+<div class="quote-text" style="color:#fff">"Le meilleur moment pour démarrer, c'était hier. Le deuxième meilleur moment, c'est maintenant."</div>
+<div class="quote-author" style="color:#e5e4e2">Proverbe que j'applique à ma prospection quotidienne</div>
+</div>
 <h2 class="cta-title">Créons ensemble l'avenir</h2>
 <p class="cta-subtitle">Je suis convaincu que mon profil peut apporter une réelle valeur ajoutée à 360Learning</p>
 <div class="cta-buttons">
