@@ -7,26 +7,97 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--accent:#6366f1;--dark:#1a1a1a;--light:#f8fafc;--white:#fff;--gray:#6b7280}
+:root{--accent:#6366f1;--dark:#1a1a1a;--light:#f8fafc;--white:#fff;--gray:#6b7280;--success:#10b981}
 body{font-family:'Inter',sans-serif;background:var(--light);color:var(--dark);line-height:1.7;overflow-x:hidden}
 .container{max-width:1400px;margin:0 auto;padding:0 32px}
-.hero{min-height:100vh;background:linear-gradient(135deg,#1a1a1a,#36454f);display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
+
+/* Header Sticky */
+.header-sticky{position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);z-index:1000;padding:1rem 0;box-shadow:0 2px 20px rgba(0,0,0,0.08);transform:translateY(-100%);transition:transform 0.3s ease}
+.header-sticky.visible{transform:translateY(0)}
+.header-content{display:flex;justify-content:space-between;align-items:center;gap:2rem}
+.header-name{font-weight:800;font-size:1.25rem;color:var(--dark)}
+.header-contacts{display:flex;gap:1rem;flex-wrap:wrap}
+.header-contacts a{padding:0.5rem 1rem;background:var(--accent);color:white;text-decoration:none;border-radius:50px;font-size:0.9rem;font-weight:600;transition:all 0.3s}
+.header-contacts a:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(99,102,241,0.3)}
+
+/* Hero */
+.hero{min-height:100vh;background:linear-gradient(135deg,#1a1a1a,#36454f);display:flex;align-items:center;justify-content:center;text-align:center;position:relative;padding:2rem 0}
 .hero-title{font-size:clamp(3rem,7vw,5rem);font-weight:800;color:#fff;margin-bottom:2rem;line-height:1.1}
 .highlight{background:linear-gradient(135deg,#6366f1,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-subtitle{font-size:1.375rem;color:#e5e4e2;margin-bottom:3rem}
+.hero-subtitle{font-size:1.5rem;color:#e5e4e2;margin-bottom:1rem;font-weight:600}
+.hero-pitch{font-size:1.125rem;color:#e5e4e2;max-width:700px;margin:0 auto 3rem;opacity:0.9;line-height:1.8}
 .scroll-indicator{position:absolute;bottom:3rem;cursor:pointer;text-align:center;left:50%;transform:translateX(-50%)}
 .scroll-text{font-size:0.875rem;color:#e5e4e2;text-transform:uppercase;margin-bottom:1rem}
 .scroll-arrow{width:4px;height:4rem;background:linear-gradient(to bottom,var(--accent),transparent);margin:0 auto;position:relative}
 .scroll-arrow::after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);border-left:10px solid transparent;border-right:10px solid transparent;border-top:15px solid var(--accent);animation:bounce 2s infinite}
 @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}
+
+/* Stats Section */
 .stats-section{padding:6rem 0;background:var(--white);margin-top:-3rem;position:relative;z-index:2}
 .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2.5rem;max-width:1000px;margin:0 auto}
-.stat-card{background:linear-gradient(135deg,#6366f1,#8b5cf6);padding:3rem 2rem;border-radius:24px;text-align:center;color:#fff;box-shadow:0 20px 60px rgba(99,102,241,0.25);transition:all 0.4s ease}
-.stat-card:hover{transform:translateY(-10px)}
+.stat-card{background:linear-gradient(135deg,#6366f1,#8b5cf6);padding:3rem 2rem;border-radius:24px;text-align:center;color:#fff;box-shadow:0 20px 60px rgba(99,102,241,0.25);transition:all 0.4s ease;animation:fadeInUp 0.6s ease forwards;opacity:0}
+.stat-card:nth-child(1){animation-delay:0.1s}
+.stat-card:nth-child(2){animation-delay:0.2s}
+.stat-card:nth-child(3){animation-delay:0.3s}
+.stat-card:hover{transform:translateY(-10px) scale(1.02)}
 .stat-number{font-size:3.5rem;font-weight:800}
+@keyframes fadeInUp{to{opacity:1;transform:translateY(0)}from{transform:translateY(20px)}}
+
+/* Sections */
 .section{padding:8rem 0}
 .section-title{font-size:clamp(2.5rem,6vw,4rem);font-weight:800;text-align:center;margin-bottom:4rem}
 .section-subtitle{font-size:2rem;font-weight:600;text-align:center;margin-bottom:3rem}
+
+/* Why Me Section - NOUVEAU */
+.why-me-section{background:linear-gradient(135deg,#f8fafc,#e5e7eb);padding:6rem 0}
+.why-me-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2.5rem;max-width:1200px;margin:0 auto}
+.why-me-card{background:white;padding:3rem;border-radius:24px;box-shadow:0 8px 32px rgba(0,0,0,0.08);position:relative;overflow:hidden;transition:all 0.4s;display:flex;flex-direction:column}
+.why-me-card::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(135deg,#6366f1,#8b5cf6)}
+.why-me-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,0.12)}
+.why-me-icon{font-size:3rem;margin-bottom:1.5rem}
+.why-me-title{font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--accent)}
+.why-me-description{font-size:1.125rem;line-height:1.8;color:var(--gray)}
+.why-me-highlight{background:linear-gradient(135deg,rgba(99,102,241,0.1),rgba(139,92,246,0.1));padding:1rem;border-radius:12px;margin-top:auto;font-weight:600;color:var(--accent)}
+
+/* Quick Wins Section - NOUVEAU */
+.quick-wins-section{background:var(--white);padding:6rem 0}
+.quick-wins-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:3rem}
+.quick-win-card{background:linear-gradient(135deg,#f8fafc,#fff);padding:2.5rem;border-radius:20px;border-left:4px solid var(--accent);transition:all 0.3s;position:relative}
+.quick-win-card:hover{transform:translateX(8px);box-shadow:0 12px 32px rgba(0,0,0,0.1)}
+.quick-win-number{position:absolute;top:1rem;right:1rem;width:40px;height:40px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:1.25rem}
+.quick-win-title{font-size:1.25rem;font-weight:700;margin-bottom:0.75rem;color:var(--dark);padding-right:50px}
+.quick-win-description{font-size:1rem;color:var(--gray);line-height:1.7}
+
+/* Challenge Section Améliorée */
+.challenge-section{background:linear-gradient(135deg,#1a1a1a,#2d3748);color:white;padding:8rem 0}
+.challenge-header{text-align:center;margin-bottom:4rem}
+.challenge-badge{display:inline-block;background:rgba(99,102,241,0.2);border:2px solid var(--accent);color:var(--accent);padding:0.75rem 2rem;border-radius:50px;font-weight:700;margin-bottom:2rem;font-size:1.125rem}
+.challenge-title{color:white;font-size:2.5rem;font-weight:800;margin-bottom:1rem}
+.challenge-subtitle{color:#e5e4e2;font-size:1.25rem;opacity:0.9;max-width:700px;margin:0 auto}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;max-width:1000px;margin:3rem auto}
+.kpi-card{background:rgba(255,255,255,0.05);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);padding:2.5rem 2rem;border-radius:20px;text-align:center;transition:all 0.4s}
+.kpi-card:hover{background:rgba(255,255,255,0.1);transform:translateY(-8px)}
+.kpi-number{font-size:3rem;font-weight:800;background:linear-gradient(135deg,#6366f1,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.5rem}
+.kpi-label{font-size:1rem;color:#e5e4e2;font-weight:600;margin-bottom:0.25rem}
+.kpi-detail{font-size:0.875rem;color:#9ca3af}
+
+/* Tools Section */
+.tools-section{background:var(--white);padding:8rem 0}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1rem;margin:2rem 0}
+.tool-badge{background:var(--accent);color:var(--white);padding:0.75rem 1.5rem;border-radius:50px;text-align:center;font-weight:600;font-size:0.95rem;transition:all 0.3s;box-shadow:0 4px 12px rgba(99,102,241,0.2)}
+.tool-badge:hover{transform:scale(1.05);box-shadow:0 6px 20px rgba(99,102,241,0.3)}
+
+/* Methodology */
+.methodology-card{background:var(--light);padding:3rem;border-radius:24px;margin:3rem 0;border-left:6px solid var(--accent)}
+.methodology-title{font-size:1.75rem;font-weight:700;margin-bottom:2rem;color:var(--accent)}
+.methodology-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:2rem}
+.step-card{background:var(--white);padding:2rem;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:all 0.3s}
+.step-card:hover{transform:translateY(-5px)}
+.step-number{font-size:2rem;font-weight:800;color:var(--accent);margin-bottom:1rem}
+.step-title{font-weight:700;margin-bottom:0.5rem}
+.step-description{color:var(--gray);font-size:0.95rem}
+
+/* Business Understanding */
 .business-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2.5rem;margin-bottom:5rem}
 .problem-card{background:#fff;padding:3rem;border-radius:24px;box-shadow:0 8px 32px rgba(0,0,0,0.08);border-top:6px solid var(--accent);transition:all 0.4s ease}
 .problem-card:hover{transform:translateY(-8px)}
@@ -34,19 +105,16 @@ body{font-family:'Inter',sans-serif;background:var(--light);color:var(--dark);li
 .problem-card p{font-size:1.125rem;line-height:1.7;color:var(--gray)}
 .solution-card{background:#fff;padding:4rem;border-radius:32px;box-shadow:0 8px 32px rgba(0,0,0,0.08);margin:3rem auto;max-width:900px;border-top:8px solid var(--accent)}
 .solution-card p{font-size:1.25rem;line-height:1.8;color:var(--gray);text-align:center}
-.video-section{padding:8rem 0;background:var(--light)}
-.video-container{background:#0c0c0c;border-radius:32px;overflow:hidden;box-shadow:0 25px 50px rgba(0,0,0,0.15);aspect-ratio:16/9;max-width:1000px;margin:0 auto}
-.video-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;cursor:pointer;background:linear-gradient(135deg,#0c0c0c,#1a1a1a);transition:all 0.4s}
-.video-placeholder:hover{background:linear-gradient(135deg,#1a1a1a,#2a2a2a)}
-.play-button{width:100px;height:100px;background:rgba(255,255,255,0.05);backdrop-filter:blur(20px);border:2px solid rgba(255,255,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all 0.4s}
-.video-placeholder:hover .play-button{transform:scale(1.1);border-color:var(--accent)}
-.play-icon{border-left:28px solid var(--accent);border-top:16px solid transparent;border-bottom:16px solid transparent;margin-left:6px}
+
+/* Why 360Learning */
 .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:3rem;margin-top:4rem}
 .why-card{background:#fff;padding:3rem;border-radius:24px;box-shadow:0 8px 32px rgba(0,0,0,0.08);border-left:6px solid var(--accent);transition:all 0.4s}
 .why-card:hover{transform:translateX(10px)}
 .why-number{font-size:3rem;font-weight:800;color:var(--accent);margin-bottom:1rem}
 .why-title{font-size:1.5rem;font-weight:700;margin-bottom:1rem}
 .why-description{font-size:1.125rem;line-height:1.7;color:var(--gray)}
+
+/* Plan 30-60-90 */
 .plan-timeline{max-width:1000px;margin:0 auto}
 .plan-item{display:grid;grid-template-columns:200px 1fr;gap:4rem;margin-bottom:5rem}
 .plan-period-number{font-size:4rem;font-weight:800;background:linear-gradient(135deg,#6366f1,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -57,6 +125,8 @@ body{font-family:'Inter',sans-serif;background:var(--light);color:var(--dark);li
 .plan-list{list-style:none}
 .plan-list li{padding-left:2rem;margin-bottom:1rem;position:relative;font-size:1.125rem;color:var(--gray)}
 .plan-list li::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:700}
+
+/* Profile Section */
 .profile-section{background:#0c0c0c;color:#fff;padding:10rem 0}
 .profile-grid{display:grid;grid-template-columns:1fr 2fr;gap:6rem;align-items:center;margin-bottom:6rem}
 .profile-image{width:350px;height:350px;border-radius:50%;margin:0 auto;box-shadow:0 30px 60px rgba(0,0,0,0.4);border:6px solid rgba(255,255,255,0.1);overflow:hidden;transition:all 0.4s}
@@ -77,51 +147,61 @@ body{font-family:'Inter',sans-serif;background:var(--light);color:var(--dark);li
 .skill-icon{font-size:2.5rem;margin-bottom:1.5rem}
 .skill-title{font-weight:700;margin-bottom:1rem;font-size:1.25rem}
 .skill-description{color:#e5e4e2;opacity:0.8}
-.cta-section{background:linear-gradient(135deg,#1a1a1a,#36454f);padding:10rem 0;text-align:center;color:#fff}
+
+/* CTA Section Améliorée */
+.cta-section{background:linear-gradient(135deg,#1a1a1a,#36454f);padding:10rem 0;text-align:center;color:#fff;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,0 C300,80 600,80 900,20 L900,120 L0,120 Z" fill="rgba(99,102,241,0.1)"/></svg>');background-size:cover;opacity:0.5}
+.cta-content{position:relative;z-index:1}
+.cta-badge{display:inline-block;background:rgba(16,185,129,0.2);border:2px solid var(--success);color:var(--success);padding:0.75rem 2rem;border-radius:50px;font-weight:700;margin-bottom:2rem;font-size:1rem}
 .cta-title{font-size:clamp(2.5rem,5vw,3.5rem);font-weight:800;margin-bottom:2rem}
-.cta-subtitle{font-size:1.375rem;opacity:0.9;margin-bottom:3rem}
-.cta-buttons{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap}
-.btn{padding:1.25rem 2.5rem;border-radius:60px;font-weight:600;text-decoration:none;transition:all 0.4s;border:2px solid transparent;display:inline-flex;align-items:center;gap:0.75rem;font-size:1.125rem}
+.cta-subtitle{font-size:1.375rem;opacity:0.9;margin-bottom:3rem;max-width:700px;margin-left:auto;margin-right:auto}
+.cta-buttons{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-top:3rem}
+.btn{padding:1.25rem 2.5rem;border-radius:60px;font-weight:600;text-decoration:none;transition:all 0.4s;border:2px solid transparent;display:inline-flex;align-items:center;gap:0.75rem;font-size:1.125rem;cursor:pointer}
 .btn-primary{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff}
 .btn-primary:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(99,102,241,0.4)}
 .btn-secondary{background:transparent;color:#fff;border-color:rgba(255,255,255,0.3)}
 .btn-secondary:hover{background:rgba(255,255,255,0.1);border-color:#fff}
+
+/* Responsive */
 @media (max-width:768px){
 .container{padding:0 20px}
 .profile-grid,.plan-item{grid-template-columns:1fr;gap:2rem;text-align:center}
 .profile-image{width:280px;height:280px}
-.business-grid{grid-template-columns:1fr}
+.business-grid,.why-me-grid,.quick-wins-grid{grid-template-columns:1fr}
 .btn{width:100%;max-width:320px;justify-content:center}
 .tools-grid{grid-template-columns:repeat(2,1fr)}
+.header-name{font-size:1rem}
+.header-contacts{gap:0.5rem}
+.header-contacts a{padding:0.5rem 0.75rem;font-size:0.8rem}
+/* Vidéo ronde responsive */
+.video-round-container{max-width:280px !important}
 }
-.tools-section{background:var(--white);padding:8rem 0}
-.methodology-card{background:var(--light);padding:3rem;border-radius:24px;margin:3rem 0;border-left:6px solid var(--accent)}
-.methodology-title{font-size:1.75rem;font-weight:700;margin-bottom:2rem;color:var(--accent)}
-.methodology-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:2rem}
-.step-card{background:var(--white);padding:2rem;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:all 0.3s}
-.step-card:hover{transform:translateY(-5px)}
-.step-number{font-size:2rem;font-weight:800;color:var(--accent);margin-bottom:1rem}
-.step-title{font-weight:700;margin-bottom:0.5rem}
-.step-description{color:var(--gray);font-size:0.95rem}
-.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1rem;margin:2rem 0}
-.tool-badge{background:var(--accent);color:var(--white);padding:0.75rem 1.5rem;border-radius:50px;text-align:center;font-weight:600;font-size:0.95rem;transition:all 0.3s;box-shadow:0 4px 12px rgba(99,102,241,0.2)}
-.tool-badge:hover{transform:scale(1.05);box-shadow:0 6px 20px rgba(99,102,241,0.3)}
-.experience-card{background:var(--white);padding:3rem;border-radius:24px;box-shadow:0 8px 32px rgba(0,0,0,0.08);margin:3rem 0;border-top:6px solid var(--accent)}
-.experience-title{font-size:1.5rem;font-weight:700;margin-bottom:1.5rem}
-.experience-list{list-style:none;padding:0}
-.experience-list li{padding-left:2rem;margin-bottom:1rem;position:relative;color:var(--gray)}
-.experience-list li::before{content:'▸';position:absolute;left:0;color:var(--accent);font-weight:700}
-.quote-section{background:var(--light);padding:3rem;border-radius:24px;margin:3rem 0;text-align:center;border-left:6px solid var(--accent)}
-.quote-text{font-size:1.5rem;font-style:italic;color:var(--dark);line-height:1.8;margin-bottom:1rem}
-.quote-author{color:var(--gray);font-size:1rem}
 </style>
 </head>
 <body>
+
+<!-- Header Sticky -->
+<header class="header-sticky" id="stickyHeader">
+<div class="container">
+<div class="header-content">
+<div class="header-name">Hugo Titone → SDR @ 360Learning</div>
+<div class="header-contacts">
+<a href="mailto:hugo.titone@gmail.com">✉️ Email</a>
+<a href="tel:+33778203627">📞 Appeler</a>
+</div>
+</div>
+</div>
+</header>
+
+<!-- Hero Section -->
 <section class="hero">
 <div class="container">
-<div>
-<h1 class="hero-title">Candidature de <span class="highlight">Hugo</span><br>au poste de <span class="highlight">SDR</span><br>chez <span class="highlight">360Learning</span></h1>
-<p class="hero-subtitle">Une approche personnalisée et méthodique pour rejoindre votre équipe</p>
+<div class="hero-content">
+<h1 class="hero-title">
+Candidature de <span class="highlight">Hugo</span><br>au poste de <span class="highlight">SDR</span><br>chez <span class="highlight">360Learning</span>
+</h1>
+<p class="hero-subtitle">Objectif : Devenir votre prochain top performer</p>
+
 <div class="scroll-indicator" onclick="document.querySelector('.stats-section').scrollIntoView({behavior:'smooth'})">
 <div class="scroll-text">Découvrez la suite</div>
 <div class="scroll-arrow"></div>
@@ -130,27 +210,180 @@ body{font-family:'Inter',sans-serif;background:var(--light);color:var(--dark);li
 </div>
 </section>
 
+<!-- Video Section Circulaire -->
+<section style="padding:6rem 0;background:linear-gradient(135deg,#f8fafc,#e5e7eb)">
+<div class="container">
+<div style="text-align:center;margin-bottom:3rem">
+<h3 style="font-size:1.75rem;font-weight:700;margin-bottom:0.5rem;color:var(--dark)">
+J'ai un message pour vous !
+</h3>
+<p style="color:var(--gray);font-size:1.125rem">
+Découvrez en 1 minute qui je suis et pourquoi je veux rejoindre votre équipe SDR
+</p>
+</div>
+
+<!-- Container avec vidéo ronde -->
+<div class="video-round-container" style="max-width:600px;margin:0 auto;position:relative">
+<!-- Cercle externe décoratif -->
+<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:calc(100% + 40px);height:calc(100% + 40px);border-radius:50%;background:linear-gradient(135deg,#6366f1,#8b5cf6);opacity:0.1;z-index:0"></div>
+<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:calc(100% + 20px);height:calc(100% + 20px);border-radius:50%;border:3px solid rgba(99,102,241,0.3);z-index:0"></div>
+
+<!-- Container vidéo rond -->
+<div style="position:relative;width:100%;padding-bottom:100%;border-radius:50%;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,0.2);border:6px solid white;z-index:1">
+<iframe 
+  src="https://www.loom.com/embed/VOTRE_ID_VIDEO_ICI" 
+  frameborder="0" 
+  webkitallowfullscreen 
+  mozallowfullscreen 
+  allowfullscreen 
+  style="position:absolute;top:0;left:0;width:100%;height:100%">
+</iframe>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Stats Section -->
 <section class="stats-section">
 <div class="container">
 <div class="stats-grid">
 <div class="stat-card"><div class="stat-number">+175%</div><div>Croissance CA<br>(350k€→950k€)</div></div>
-<div class="stat-card"><div class="stat-number">180</div><div>Clients gérés<br>(PME & ETI)</div></div>
-<div class="stat-card"><div class="stat-number">500</div><div>Cold calls<br>réalisés</div></div>
+<div class="stat-card"><div class="stat-number">+180</div><div>Nouveaux clients<br>mid-market</div></div>
+<div class="stat-card"><div class="stat-number">500</div><div>Cold calls réalisés<br>en 15 jours</div></div>
 </div>
 </div>
 </section>
 
-<section class="video-section">
+<!-- Why Me Section - NOUVEAU -->
+<section class="why-me-section">
 <div class="container">
-<div class="video-container">
-<div class="video-placeholder" onclick="alert('Ajoutez votre lien vidéo Loom dans le script')">
-<div class="play-button"><div class="play-icon"></div></div>
-<div style="color:#e5e4e2;font-size:1.25rem">Vidéo personnalisée pour 360Learning<br><small style="opacity:0.7">Cliquez pour découvrir mon message</small></div>
+<h2 class="section-title">Pourquoi choisir mon profil ?</h2>
+<div class="why-me-grid">
+<div class="why-me-card">
+<div class="why-me-icon">🎯</div>
+<div class="why-me-title">Expérience terrain éprouvée</div>
+<div class="why-me-description">
+5 ans chez AkzoNobel à gérer 180 comptes mid-market. Je connais la réalité du cycle de vente long, la gestion de pipelines complexes et la négociation B2B.
+</div>
+<div class="why-me-highlight">
++175% de croissance CA en 5 ans
+</div>
+</div>
+
+<div class="why-me-card">
+<div class="why-me-icon">⚡</div>
+<div class="why-me-title">Stack SDR moderne maîtrisé</div>
+<div class="why-me-description">
+Formation intensive Akimbo Academy : LemList, Sales Navigator, PhantomBuster, qualification BANT/MEDDIC, séquences multicanales. Opérationnel dès J1.
+</div>
+<div class="why-me-highlight">
+500 cold calls en 15 jours • 22,6% contact rate
+</div>
+</div>
+
+<div class="why-me-card">
+<div class="why-me-icon">🚀</div>
+<div class="why-me-title">Mindset Scale-up</div>
+<div class="why-me-description">
+J'ai quitté la sécurité du corporatif pour rejoindre l'univers SaaS. Passion pour la Tech, l'impact mesurable et la culture du feedback.
+</div>
+<div class="why-me-highlight">
+Disponible immédiatement
+</div>
 </div>
 </div>
 </div>
 </section>
 
+<!-- Challenge Section Améliorée -->
+<section class="challenge-section">
+<div class="container">
+<div class="challenge-header">
+<div class="challenge-badge">🏆 Challenge Akimbo Academy - 15 jours</div>
+<h2 class="challenge-title">Mon baptême du feu en prospection B2B SaaS</h2>
+<p class="challenge-subtitle">
+Dans le cadre de ma formation, j'ai réalisé un sprint intensif de prospection pour ArcaScience.
+Objectif : tester mes compétences en conditions réelles sur un marché inconnu.
+</p>
+</div>
+
+<div class="kpi-grid">
+<div class="kpi-card">
+<div class="kpi-number">500</div>
+<div class="kpi-label">Cold Calls</div>
+<div class="kpi-detail">en 15 jours via AirCall</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-number">113</div>
+<div class="kpi-label">Conversations</div>
+<div class="kpi-detail">22,6% de contact</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-number">38</div>
+<div class="kpi-label">Intérêts générés</div>
+<div class="kpi-detail">Mail + rappels planifiés</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-number">13</div>
+<div class="kpi-label">RDV obtenus</div>
+<div class="kpi-detail">2,6% conversion</div>
+</div>
+</div>
+
+<div style="margin-top:3rem;text-align:center">
+<p style="font-size:1.125rem;color:#e5e4e2;max-width:800px;margin:0 auto;line-height:1.8">
+✅ Création de fichiers de prospection (Sales Navigator + PhantomBuster)<br>
+✅ Séquences multicanales personnalisées sur LemList<br>
+✅ Qualification rigoureuse selon BANT/MEDDIC
+</p>
+</div>
+</div>
+</section>
+
+<!-- Mon engagement Section - MODIFIÉ -->
+<section class="quick-wins-section">
+<div class="container">
+<h2 class="section-title">💼 Mon engagement dès le départ</h2>
+<p style="text-align:center;font-size:1.25rem;color:var(--gray);max-width:700px;margin:0 auto 3rem">
+Comment je compte contribuer à l'équipe SDR
+</p>
+<div class="quick-wins-grid">
+<div class="quick-win-card">
+<div class="quick-win-number">1</div>
+<div class="quick-win-title">Apprentissage intensif</div>
+<div class="quick-win-description">
+M'immerger totalement dans votre univers, vos personas et votre pitch. Observer, écouter et m'approprier vos best practices avant d'agir.
+</div>
+</div>
+
+<div class="quick-win-card">
+<div class="quick-win-number">2</div>
+<div class="quick-win-title">Participation active</div>
+<div class="quick-win-description">
+Contribuer dès que possible à la prise de RDV et à la génération d'opportunités, en montée progressive selon votre processus d'onboarding.
+</div>
+</div>
+
+<div class="quick-win-card">
+<div class="quick-win-number">3</div>
+<div class="quick-win-title">Feedback terrain</div>
+<div class="quick-win-description">
+Partager mes retours d'appels et d'échanges prospects pour enrichir la connaissance collective et améliorer nos approches.
+</div>
+</div>
+
+<div class="quick-win-card">
+<div class="quick-win-number">4</div>
+<div class="quick-win-title">Esprit d'équipe</div>
+<div class="quick-win-description">
+M'intégrer dans la dynamique collective, apprendre des top performers et contribuer à une ambiance positive.
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Tools Section -->
 <section class="tools-section">
 <div class="container">
 <h2 class="section-title">💪 Ce que j'apporte à 360Learning</h2>
@@ -194,43 +427,6 @@ body{font-family:'Inter',sans-serif;background:var(--light);color:var(--dark);li
 </div>
 </div>
 
-<div style="margin-top:4rem">
-<h3 class="section-subtitle" style="font-size:1.75rem;text-align:left;margin-bottom:2rem">3. Expérience récente en environnement SaaS</h3>
-<div class="experience-card">
-<div class="experience-title">Business Developer @ ArcaScience (Décembre 2025)</div>
-<ul class="experience-list">
-<li>Création de fichiers de prospection via Sales Navigator & PhantomBuster</li>
-<li>Mise en place de séquences multicanales (mail/LinkedIn/téléphone) sur LemList</li>
-<li>500 cold calls réalisés via AirCall</li>
-</ul>
-
-<div style="margin-top:2rem">
-<h4 style="font-size:1.25rem;font-weight:700;margin-bottom:1.5rem;color:var(--accent)">📈 Mes KPIs en prospection</h4>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.5rem">
-<div style="background:var(--light);padding:1.5rem;border-radius:12px;text-align:center">
-<div style="font-size:2rem;font-weight:800;color:var(--accent)">500</div>
-<div style="font-size:0.9rem;color:var(--gray)">Cold Calls</div>
-</div>
-<div style="background:var(--light);padding:1.5rem;border-radius:12px;text-align:center">
-<div style="font-size:2rem;font-weight:800;color:var(--accent)">113</div>
-<div style="font-size:0.9rem;color:var(--gray)">Conversations</div>
-<div style="font-size:0.8rem;color:var(--gray);margin-top:0.25rem">22,6% de contact</div>
-</div>
-<div style="background:var(--light);padding:1.5rem;border-radius:12px;text-align:center">
-<div style="font-size:2rem;font-weight:800;color:var(--accent)">38</div>
-<div style="font-size:0.9rem;color:var(--gray)">Intérêts générés</div>
-<div style="font-size:0.8rem;color:var(--gray);margin-top:0.25rem">Mail + rappels</div>
-</div>
-<div style="background:var(--light);padding:1.5rem;border-radius:12px;text-align:center">
-<div style="font-size:2rem;font-weight:800;color:var(--accent)">13</div>
-<div style="font-size:0.9rem;color:var(--gray)">RDV obtenus</div>
-<div style="font-size:0.8rem;color:var(--gray);margin-top:0.25rem">2,6% conversion</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
 <div style="margin-top:5rem">
 <h2 class="section-title">🚀 Mon approche SDR</h2>
 <div class="methodology-card">
@@ -261,16 +457,12 @@ body{font-family:'Inter',sans-serif;background:var(--light);color:var(--dark);li
 <div class="step-description">Transfert d'opportunités chaudes et contextualisées aux AE</div>
 </div>
 </div>
-
-<div class="quote-section">
-<div class="quote-text">"Le meilleur moment pour démarrer, c'était hier. Le deuxième meilleur moment, c'est maintenant."</div>
-<div class="quote-author">Proverbe que j'applique à ma prospection quotidienne</div>
-</div>
 </div>
 
 </div>
 </section>
 
+<!-- Business Understanding -->
 <section class="section" style="background:var(--white)">
 <div class="container">
 <h2 class="section-title">Ce que j'ai compris de votre business</h2>
@@ -285,6 +477,7 @@ body{font-family:'Inter',sans-serif;background:var(--light);color:var(--dark);li
 </div>
 </section>
 
+<!-- Why 360Learning -->
 <section class="section" style="background:var(--light)">
 <div class="container">
 <h2 class="section-title">Pourquoi 360Learning</h2>
@@ -296,6 +489,7 @@ body{font-family:'Inter',sans-serif;background:var(--light);color:var(--dark);li
 </div>
 </section>
 
+<!-- Plan 30-60-90 -->
 <section class="section" style="background:var(--white)">
 <div class="container">
 <h2 class="section-title">Mon plan 30-60-90 jours</h2>
@@ -343,6 +537,7 @@ body{font-family:'Inter',sans-serif;background:var(--light);color:var(--dark);li
 </div>
 </section>
 
+<!-- Profile Section -->
 <section class="profile-section">
 <div class="container">
 <h2 class="section-title">Mon profil</h2>
@@ -353,10 +548,10 @@ body{font-family:'Inter',sans-serif;background:var(--light);color:var(--dark);li
 <div class="story-content">
 <h3>Mon histoire</h3>
 <div class="story-timeline">
-<div class="story-item"><div class="story-period">2012-2014</div><div class="story-description">BTS Négociation puis Bachelor Marketing. J'ai appris les fondamentaux de la vente B2B.</div></div>
+<div class="story-item"><div class="story-period">2012-2014</div><div class="story-description">BTS NRC puis Bachelor Marketing and Business. J'ai appris les fondamentaux de la vente B2B.</div></div>
 <div class="story-item"><div class="story-period">2020-2025</div><div class="story-description">Ingénieur Commercial AkzoNobel. 5 ans, 180 clients, +175% de croissance (350k€→950k€).</div></div>
 <div class="story-item"><div class="story-period">2025</div><div class="story-description">Le déclic vers le SaaS. Certifications HubSpot, Cisco. Je veux avoir le plus d'impact.</div></div>
-<div class="story-item"><div class="story-period">Fin 2025</div><div class="story-description">Formation intensive SDR : 500 cold calls, prospection multicanale, maîtrise BANT/MEDDIC.</div></div>
+<div class="story-item"><div class="story-period">Fin 2025</div><div class="story-description">Formation Akimbo Academy Business Developer / SDR B2B SaaS : outbound structuré, 500 cold calls, qualification BANT/MEDDIC, séquences multicanales.</div></div>
 <div class="story-item"><div class="story-period">Aujourd'hui</div><div class="story-description">Prêt à mettre mon expérience au service de <strong>360Learning</strong>.</div></div>
 </div>
 </div>
@@ -369,33 +564,44 @@ body{font-family:'Inter',sans-serif;background:var(--light);color:var(--dark);li
 </div>
 </section>
 
+<!-- CTA Section Améliorée -->
 <section class="cta-section">
 <div class="container">
-<div class="quote-section" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.3);margin-bottom:4rem">
-<div class="quote-text" style="color:#fff">"Le meilleur moment pour démarrer, c'était hier. Le deuxième meilleur moment, c'est maintenant."</div>
-<div class="quote-author" style="color:#e5e4e2">Proverbe que j'applique à ma prospection quotidienne</div>
-</div>
-<h2 class="cta-title">Créons ensemble l'avenir</h2>
-<p class="cta-subtitle">Je suis convaincu que mon profil peut apporter une réelle valeur ajoutée à 360Learning</p>
+<div class="cta-content">
+<div class="cta-badge">✅ Disponible immédiatement</div>
+<h2 class="cta-title">Prêt à démarrer ?</h2>
+<p class="cta-subtitle">Je suis convaincu que mon profil peut apporter une réelle valeur ajoutée à 360Learning.<br>Discutons-en autour d'un café (virtuel ou réel) !</p>
 <div class="cta-buttons">
-<a href="mailto:hugo.titone@gmail.com?subject=Candidature%20SDR%20-%20360Learning" class="btn btn-primary">✉️ Démarrons la conversation</a>
-<a href="https://drive.google.com/file/d/1g0K8N5ctHkDb-K20TEPDXL9fUbtPvH6K/view?usp=sharing" target="_blank" class="btn btn-secondary">📄 Voir mon CV</a>
+<a href="mailto:hugo.titone@gmail.com?subject=Candidature%20SDR%20-%20360Learning&body=Bonjour%20Hugo,%0D%0A%0D%0AJ'ai%20consulté%20votre%20candidature%20et%20je%20souhaite%20échanger%20avec%20vous." class="btn btn-primary">✉️ Planifions un échange</a>
 <a href="tel:+33778203627" class="btn btn-secondary">📞 07-78-20-36-27</a>
 <a href="https://www.linkedin.com/in/hugo-titone" target="_blank" class="btn btn-secondary">💼 Mon LinkedIn</a>
+<a href="https://drive.google.com/file/d/1g0K8N5ctHkDb-K20TEPDXL9fUbtPvH6K/view?usp=sharing" target="_blank" class="btn btn-secondary">📄 Télécharger mon CV</a>
+</div>
 </div>
 </div>
 </section>
 
 <script>
-// Ajoutez votre lien vidéo ici
-const VIDEO_URL = "https://loom.com/votre-video";
-function playVideo(){
-  if(VIDEO_URL!=="https://loom.com/votre-video"){
-    window.open(VIDEO_URL,'_blank');
-  }else{
-    alert('Ajoutez votre lien vidéo Loom dans la variable VIDEO_URL du script');
+// Sticky header on scroll
+window.addEventListener('scroll', function() {
+  const header = document.getElementById('stickyHeader');
+  if (window.scrollY > 100) {
+    header.classList.add('visible');
+  } else {
+    header.classList.remove('visible');
   }
-}
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
 </script>
 </body>
 </html>
