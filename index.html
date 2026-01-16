@@ -173,8 +173,6 @@ body{font-family:'Inter',sans-serif;background:var(--light);color:var(--dark);li
 .header-name{font-size:1rem}
 .header-contacts{gap:0.5rem}
 .header-contacts a{padding:0.5rem 0.75rem;font-size:0.8rem}
-/* Vidéo ronde responsive */
-.video-round-container{max-width:280px !important}
 }
 </style>
 </head>
@@ -210,7 +208,7 @@ Candidature de <span class="highlight">Hugo</span><br>au poste de <span class="h
 </div>
 </section>
 
-<!-- Video Section Circulaire -->
+<!-- Video Section Rectangulaire -->
 <section style="padding:6rem 0;background:linear-gradient(135deg,#f8fafc,#e5e7eb)">
 <div class="container">
 <div style="text-align:center;margin-bottom:3rem">
@@ -222,21 +220,16 @@ Découvrez en 1 minute qui je suis et pourquoi je veux rejoindre votre équipe S
 </p>
 </div>
 
-<!-- Container avec vidéo ronde -->
-<div class="video-round-container" style="max-width:600px;margin:0 auto;position:relative">
-<!-- Cercle externe décoratif -->
-<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:calc(100% + 40px);height:calc(100% + 40px);border-radius:50%;background:linear-gradient(135deg,#6366f1,#8b5cf6);opacity:0.1;z-index:0"></div>
-<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:calc(100% + 20px);height:calc(100% + 20px);border-radius:50%;border:3px solid rgba(99,102,241,0.3);z-index:0"></div>
-
-<!-- Container vidéo rond -->
-<div style="position:relative;width:100%;padding-bottom:100%;border-radius:50%;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,0.2);border:6px solid white;z-index:1">
+<!-- Container vidéo rectangulaire -->
+<div style="max-width:900px;margin:0 auto">
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:24px;box-shadow:0 25px 50px rgba(0,0,0,0.15);border:6px solid white">
 <iframe 
   src="https://www.loom.com/embed/VOTRE_ID_VIDEO_ICI" 
   frameborder="0" 
   webkitallowfullscreen 
   mozallowfullscreen 
   allowfullscreen 
-  style="position:absolute;top:0;left:0;width:100%;height:100%">
+  style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:18px">
 </iframe>
 </div>
 </div>
